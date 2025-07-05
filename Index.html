@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. DWI KARYA INTI - General Contractor</title>
+    <!-- Memuat Tailwind CSS dari CDN untuk styling yang elegan dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Konfigurasi warna kustom untuk Tailwind CSS */
+        :root {
+            --primary-light-blue: #6495ED; /* Cornflower Blue - Biru muda utama */
+            --secondary-light-blue: #ADD8E6; /* Light Blue - Biru muda sekunder */
+            --darker-light-blue: #4169E1; /* RoyalBlue - Biru muda agak tua */
+            --accent-yellow: #FFD700; /* Gold - Kuning untuk aksen */
+            --text-light: #FFFFFF; /* Teks terang (putih) untuk latar belakang gelap/biru */
+            --text-dark: #000000; /* Teks gelap (hitam) untuk latar belakang terang */
+            --bg-light: #F0F8FF; /* AliceBlue - Latar belakang sangat terang */
+            --bg-dark: #2C3E50; /* Dark Blue-Gray - Latar belakang gelap untuk footer */
+            --header-dark-blue: #000080; /* Navy - Biru tua untuk header */
+        }
+
+        /* Mengatur font Inter secara global */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark); /* Default teks gelap (hitam) */
+            line-height: 1.6;
+            background-color: var(--bg-light); /* Latar belakang sangat terang */
+        }
+
+        /* Styling untuk scroll-behavior yang mulus */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Efek hover untuk tombol utama (Lihat Semua Proyek) */
+        .btn-primary {
+            background-color: var(--darker-light-blue); /* Default biru muda tua */
+            color: var(--text-light); /* Teks putih */
+            transition: all 0.3s ease; /* Transisi untuk semua properti */
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-yellow); /* Berubah menjadi kuning saat hover */
+            color: var(--text-dark); /* Teks berubah menjadi hitam saat hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Efek hover untuk tautan navigasi */
+        .nav-link {
+            color: var(--text-light); /* Default putih */
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-yellow); /* Berubah menjadi kuning saat hover */
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Styling kustom untuk logo dengan outline hitam */
+        .logo-text {
+            color: var(--accent-yellow);
+            text-shadow:
+                -1px -1px 0 var(--text-dark),
+                1px -1px 0 var(--text-dark),
+                -1px 1px 0 var(--text-dark),
+                1px 1px 0 var(--text-dark),
+                -2px -2px 0 var(--text-dark),
+                2px -2px 0 var(--text-dark),
+                -2px 2px 0 var(--text-dark),
+                2px 2px 0 var(--text-dark); /* Simulate bold black outline */
+        }
+
+        /* Styling kustom untuk hero section */
+        .hero-background {
+            background-image: linear-gradient(rgba(65, 105, 225, 0.8), rgba(65, 105, 225, 0.8)), url('images/konstruksi-berkualitas.jpg'); /* Biru muda agak tua dengan overlay dan gambar konstruksi */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Styling untuk Mission Section dengan perpaduan warna */
+        #mission {
+            background: linear-gradient(to right, var(--secondary-light-blue), var(--accent-yellow)); /* Gradient biru muda ke kuning */
+            color: var(--text-dark); /* Teks gelap agar terbaca di atas gradient */
+        }
+
+        #mission .mission-item {
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang item misi sedikit transparan putih */
+            color: var(--text-dark); /* Teks gelap di dalam item misi */
+        }
+
+        #mission h2, #mission h3 {
+            color: var(--text-dark); /* Judul dan sub-judul misi juga gelap */
+        }
+
+        /* Styling untuk daftar legalitas dengan bingkai */
+        .legalities-list li {
+            margin-bottom: 12px;
+            padding: 15px;
+            border: 2px solid var(--primary-light-blue); /* Bingkai biru muda */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang item sedikit transparan putih */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            padding-left: 40px; /* Ruang untuk ikon centang */
+        }
+
+        .legalities-list li::before {
+            content: '✓'; /* Tanda centang sebagai bullet point */
+            color: var(--accent-yellow); /* Warna kuning untuk tanda centang */
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Header minimalis dan elegan */
+        header {
+            background-color: var(--header-dark-blue); /* Biru tua solid */
+            color: var(--text-light); /* Teks putih untuk kontras */
+            padding: 12px 0; /* Padding vertikal sedikit lebih kecil */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow lebih halus */
+        }
+
+        header .nav-link {
+            color: var(--text-light); /* Pastikan teks navigasi tetap putih di header */
+        }
+        header .nav-link:hover {
+            color: var(--accent-yellow); /* Tetap kuning saat hover */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="py-4 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+            <a href="#" class="text-3xl font-extrabold tracking-wide rounded-lg p-2 transition-transform duration-300 hover:scale-105 logo-text">
+                PT. DWI KARYA INTI
+            </a>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center md:space-x-8 space-x-4">
+                    <li><a href="#about" class="nav-link text-lg font-semibold rounded-md px-3 py-1">Tentang Kami</a></li>
+                    <li><a href="#mission" class="nav-link text-lg font-semibold rounded-md px-3 py-1">Misi Kami</a></li>
+                    <li><a href="#experiences" class="nav-link text-lg font-semibold rounded-md px-3 py-1">Pengalaman Proyek</a></li>
+                    <li><a href="#legalities" class="nav-link text-lg font-semibold rounded-md px-3 py-1">Legalitas</a></li>
+                    <li><a href="#contact" class="nav-link text-lg font-semibold rounded-md px-3 py-1">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-background text-text-light text-center py-32 md:py-48 rounded-b-lg shadow-xl">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                Membangun Masa Depan <br class="hidden md:inline">dengan Integritas dan Keunggulan
+            </h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 opacity-90">
+                PT. DWI KARYA INTI: Kontraktor Umum Terpercaya, Berkomitmen pada Kualitas dan Kepuasan Pelanggan.
+            </p>
+            <a href="#experiences" class="btn-primary inline-block font-bold py-3 px-8 rounded-full text-lg shadow-lg transform hover:scale-105">
+                Lihat Proyek Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-bg-light rounded-lg shadow-md mx-4 md:mx-auto -mt-16 relative z-10">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-primary-light-blue mb-8">Tentang Kami</h2>
+            <p class="text-lg leading-relaxed max-w-4xl mx-auto text-text-dark">
+                PT. DWI KARYA INTI adalah perusahaan kontraktor umum yang berlokasi di Jalan Kedinding Tengah Sekolahan No. 1, Kenjeran, Surabaya. Kami berdedikasi untuk menyediakan layanan konstruksi berkualitas tinggi dengan menjunjung standar etika dan integritas tertinggi. Dengan pengalaman luas dalam berbagai proyek berskala regional dan nasional, kami menjadikan kepuasan pelanggan sebagai inti dari setiap pekerjaan kami.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-16 rounded-lg shadow-md mx-4 md:mx-auto mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12">Misi Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="mission-item p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">Pertumbuhan & Pengembangan</h3>
+                    <p class="text-lg opacity-90">Menjadi perusahaan yang kuat dan berkembang pesat di tingkat regional dan nasional, terus berinovasi dan beradaptasi.</p>
+                </div>
+                <div class="mission-item p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">Kontribusi Nasional</h3>
+                    <p class="text-lg opacity-90">Berpartisipasi aktif dalam pembangunan nasional, memberikan dampak positif bagi infrastruktur dan masyarakat Indonesia.</p>
+                </div>
+                <div class="mission-item p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">Etika & Integritas</h3>
+                    <p class="text-lg opacity-90">Menjunjung tinggi standar etika dan integritas dalam setiap aspek pekerjaan, membangun kepercayaan dengan transparansi dan kejujuran.</p>
+                </div>
+                <div class="mission-item p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">Kepuasan Pelanggan</h3>
+                    <p class="text-lg opacity-90">Menjadikan kepuasan pelanggan sebagai prioritas utama, melampaui ekspektasi melalui kualitas dan layanan prima.</p>
+                </div>
+                <div class="mission-item p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4">Keselamatan & Kesehatan Lingkungan</h3>
+                    <p class="text-lg opacity-90">Memastikan keselamatan dan kesehatan lingkungan adalah suatu keharusan, menciptakan lingkungan kerja yang aman dan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="py-16 bg-bg-light rounded-lg shadow-md mx-4 md:mx-auto mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-primary-light-blue mb-12">Pengalaman Proyek Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Item 1: Apartment Adhiwangsa -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/apartment-adhiwangsa.jpg" alt="Apartment Adhiwangsa" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">Apartment Adhiwangsa</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> MEP (Mechanical, Electrical, Plumbing)<br>
+                            <span class="font-medium">Lokasi:</span> Surabaya<br>
+                            <span class="font-medium">Tahun:</span> 2009<br>
+                            <span class="font-medium">Nilai:</span> Rp 750.000.000
+                        </p>
+                    </div>
+                </div>
+                <!-- Project Item 2: Double Tree Hotel by Hilton Surabaya -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/double-tree-hotel-surabaya" alt="Double Tree Hotel by Hilton Surabaya" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">Double Tree Hotel by Hilton Surabaya</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> Plumbing & Sanitary Works<br>
+                            <span class="font-medium">Lokasi:</span> Surabaya<br>
+                            <span class="font-medium">Tahun:</span> 2014-2015<br>
+                            <span class="font-medium">Nilai:</span> Rp 6.750.000.000 (Grand Hotel Aston) dan Rp 3.000.000.000 (Double Tree)
+                        </p>
+                    </div>
+                </div>
+                <!-- Project Item 3: Hotel Pesonna Magelang -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/hotel-pesonna-magelang" alt="Hotel Pesonna Magelang" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">Hotel Pesonna Magelang</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> MEP<br>
+                            <span class="font-medium">Lokasi:</span> Magelang<br>
+                            <span class="font-medium">Tahun:</span> 2017<br>
+                            <span class="font-medium">Nilai:</span> Rp 8.000.000.000
+                        </p>
+                    </div>
+                </div>
+                <!-- Project Item 4: RSUD Ar-Rozy Kota Probolinggo -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/rsud-ar-rozy-probolinggo" alt="RSUD Ar-Rozy Kota Probolinggo" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">RSUD Ar-Rozy Kota Probolinggo</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> MEP<br>
+                            <span class="font-medium">Lokasi:</span> Probolinggo<br>
+                            <span class="font-medium">Tahun:</span> 2022<br>
+                            <span class="font-medium">Nilai:</span> Rp 16.000.000.000
+                        </p>
+                    </div>
+                </div>
+                <!-- Project Item 5: Hotel Uma Sri Umalas -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/hotel-uma-sri-umalas" alt="Hotel Uma Sri Umalas" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">Hotel Uma Sri Umalas</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> MEP<br>
+                            <span class="font-medium">Lokasi:</span> Bali<br>
+                            <span class="font-medium">Tahun:</span> 2025<br>
+                            <span class="font-medium">Nilai:</span> Rp 4.300.000.000
+                        </p>
+                    </div>
+                </div>
+                <!-- Project Item 6: Discovery Mall Kuta -->
+                <div class="project-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img src="images/discovery-mall-kuta" alt="Discovery Mall Kuta" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-primary-light-blue mb-2">Discovery Mall Kuta</h3>
+                        <p class="text-text-dark text-base">
+                            <span class="font-medium">Pekerjaan:</span> MEP<br>
+                            <span class="font-medium">Lokasi:</span> Bali<br>
+                            <span class="font-medium">Tahun:</span> 2024<br>
+                            <span class="font-medium">Nilai:</span> Rp 8.000.000.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="btn-primary inline-block font-bold py-3 px-8 rounded-full text-lg shadow-lg transform hover:scale-105">
+                    Lihat Semua Proyek
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legalitas Dokumen Section -->
+    <section id="legalities" class="py-16 bg-secondary-light-blue text-text-dark rounded-lg shadow-md mx-4 md:mx-auto mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-darker-light-blue mb-12">Legalitas Dokumen</h2>
+            <p class="text-lg leading-relaxed max-w-4xl mx-auto mb-8">
+                PT. DWI KARYA INTI memiliki kelengkapan dokumen legalitas yang menunjukkan kepatuhan dan profesionalisme kami dalam menjalankan bisnis konstruksi. Berikut adalah beberapa dokumen legalitas penting kami:
+            </p>
+            <ul class="legalities-list text-left max-w-2xl mx-auto text-lg">
+                <li>Nomor Pokok Wajib Pajak (NPWP): 70.821.227.3-18:000 (atas nama PT. DWI KARYA INTI), dan 70.838.142.0-010.000 (atas nama WAWAN SUHELD)</li>
+                <li>Tanda Daftar Perusahaan (TDP) Perseroan Terbatas (PT) dengan Nomor: 503/436.6.11/2014</li>
+                <li>Surat Keterangan Terdaftar dari Kementerian Keuangan Republik Indonesia, Direktorat Jenderal Pajak, Kantor Wilayah DJP Jawa Timur, KPP Pratama Surabaya Mulyorejo. Tanggal terdaftar: 21 Agustus 2014.</li>
+                <li>Sertifikat Badan Usaha Jasa Pelaksana Konstruksi dari Lembaga Pengembangan Jasa Konstruksi (LPJK).</li>
+                <li>Kartu Tanda Anggota Biasa GAPENSI (Gabungan Pelaksana Konstruksi Nasional Indonesia) atas nama PT. DWI KARYA INTI, dengan pimpinan WAWAN SUSELO. Berlaku dari 1 Januari 2015 sampai dengan 31 Desember 2015.</li>
+                <li>Surat Izin Usaha Perdagangan (KECIL) dari Pemerintah Kota Surabaya, Dinas Perdagangan dan Perindustrian.</li>
+                <li>Izin Usaha Jasa Konstruksi Nasional dari Pemerintah Kota Surabaya, Dinas Pekerjaan Umum Cipta Karya dan Tata Ruang. Nomor: 188.4/25.1436.02/2016.</li>
+                <li>Sertifikat Kompetensi Ahli Madya Elektrikal Konstruksi Bangunan Gedung atas nama M.V. HERY KUSBIANTORO, berlaku 5 tahun.</li>
+                <li>Lampiran Keputusan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia terkait persetujuan perubahan Anggaran Dasar Perseroan Terbatas PT. DWI KARYA INTI.</li>
+            </ul>
+            <p class="text-lg leading-relaxed max-w-4xl mx-auto mt-8">
+                Dengan kelengkapan legalitas ini, PT. DWI KARYA INTI siap menjadi mitra terpercaya Anda dalam setiap proyek konstruksi.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-bg-light rounded-lg shadow-md mx-4 md:mx-auto mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-primary-light-blue mb-12">Hubungi Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="contact-item bg-primary-light-blue text-text-light p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4 text-accent-yellow">Kantor Pusat</h3>
+                    <p class="text-lg">Jalan Kedinding Tengah Sekolahan No. 1, Kenjeran, Surabaya</p>
+                </div>
+                <div class="contact-item bg-primary-light-blue text-text-light p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4 text-accent-yellow">Telepon</h3>
+                    <p class="text-lg"><a href="tel:+62319924438" class="text-text-light hover:underline">(031) 9924438</a></p>
+                </div>
+                <div class="contact-item bg-primary-light-blue text-text-light p-8 rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <h3 class="text-2xl font-semibold mb-4 text-accent-yellow">Email</h3>
+                    <p class="text-lg"><a href="mailto:ptdwikaryainti@yahoo.com" class="text-text-light hover:underline">ptdwikaryainti@yahoo.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-bg-dark text-text-light py-8 mt-12 rounded-t-lg shadow-inner">
+        <div class="container mx-auto text-center px-4">
+            <p class="text-lg">&copy; 2025 PT. DWI KARYA INTI. Semua Hak Dilindungi.</p>
+            <p class="text-sm mt-2 opacity-80">Didesain dengan ❤️ oleh Aden</p>
+        </div>
+    </footer>
+
+</body>
+</html>
